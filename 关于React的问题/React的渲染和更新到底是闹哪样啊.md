@@ -5,10 +5,11 @@
  1. 在JSX中，定义一个元素element，其中内容可以是静态、变量值、一些用户输入，都会进行转义，所有的内容，都被转义成了字符串，防止XSS的攻击.
 
    
-    const element = <h1>Ylok Daily Essay,蛋黄日报</h1>;
-    const element = <h1>{ylok.name}</h1>;
-    const value = input.value;
-    const element = <h1>{value}</h1>;
+    const element = <h1>Ylok Daily Essay,蛋黄日报</h1>
+    const element = <h1>{ylok.name}</h1>
+    const value = input.value
+    const element = <h1>{value}</h1>
+    
   
  2. 页面中存在一个根节点Root, 这个节点内的内容，都由ReactDom来管理，这个element，是React应用的最小砖头，想要将一个 React 元素【渲染】到根 DOM 节点中，就将他们一起传入ReactDOM.render().
    
@@ -17,8 +18,8 @@
     <div id="root"></div>
     
     <JSX>
-    const element = <h1>Hello, world</h1>;
-    ReactDOM.render(element, document.getElementById('root'));
+    const element = <h1>Ylok Daily Essay,蛋黄日报</h1>
+    ReactDOM.render(element, document.getElementById('root'))
     
     
  ## 每一个React元素，都独一无二
@@ -32,7 +33,7 @@
             <h2>It is {new Date().toLocaleTimeString()}.</h2>
           </div>
         );
-        ReactDOM.render(element, document.getElementById('root'));
+        ReactDOM.render(element, document.getElementById('root'))
       }
 
     setInterval(tick, 1000);
@@ -63,8 +64,8 @@
   
   其中：
   1. 使用前序遍历顺序遍历节点树
-  2. 标签的不同<div /><span />不同，自定义标签<A /><B />不同， 标签的位置是相对父节点，原先是挂在A下，更新后在B下，那么这个也被销毁，再创建
-  3. 例如<image src='xxx'>，更新前后只替换src 属性链接
+  2. 标签的不同`<div /><span />`不同，自定义标签`<A /><B />`不同， 标签的位置是相对父节点，原先是挂在A下，更新后在B下，那么这个也被销毁，再创建
+  3. 例如`<image src='xxx'>`，更新前后只替换src 属性链接
   4. 调用该实例的 componentWillReceiveProps() 和 componentWillUpdate() 方法。render()更新节点
   5. 对于一个列表来说， 在尾部加入节点，开销较小
   
