@@ -4,23 +4,22 @@
  
  1. 在JSX中，定义一个元素element，其中内容可以是静态、变量值、一些用户输入，都会进行转义，所有的内容，都被转义成了字符串，防止XSS的攻击.
 
-   
-    const element = <h1>Ylok Daily Essay,蛋黄日报</h1>
-    const element = <h1>{ylok.name}</h1>
-    const value = input.value
-    const element = <h1>{value}</h1>
-    
+  ```jsx
+        const element = (<div>Ylok Daily Essay,蛋黄日报</div>)
+        const element = (<div>{ylok.name}</div>)
+        const value = {input.value}
+        const element = (<div>{value}</div>)
+  ```
   
  2. 页面中存在一个根节点Root, 这个节点内的内容，都由ReactDom来管理，这个element，是React应用的最小砖头，想要将一个 React 元素【渲染】到根 DOM 节点中，就将他们一起传入ReactDOM.render().
    
    
-    <Html>
-    <div id="root"></div>
+    ```jsx
+    (<div id="root"></div>)
     
-    <JSX>
-    const element = <h1>Ylok Daily Essay,蛋黄日报</h1>
+    const element = (<div>Ylok Daily Essay,蛋黄日报</div>)
     ReactDOM.render(element, document.getElementById('root'))
-    
+    ```
     
  ## 每一个React元素，都独一无二
  
@@ -38,7 +37,37 @@
 
     setInterval(tick, 1000);
     
-    
+  
+  ## 条件渲染
+  
+  React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算符 if 或者条件运算符去创建元素来表现当前的状态
+   
+  1.  true && expression 总是会返回 expression, 而 false && expression 总是会返回 false。
+
+  `
+      function Mailbox(props) {
+          const unreadMessages = props.unreadMessages;
+          return (
+            <div>
+              <h1>Hello!</h1>
+              {unreadMessages.length > 0 &&
+                <h2>
+                  You have {unreadMessages.length} unread messages.
+                </h2>
+              }
+            </div>
+          );
+    } 
+  `
+  2.  condition ? true : false。
+  
+  ` 
+  {isLoggedIn
+        ? <LogoutButton onClick={this.handleLogoutClick} />
+        : <LoginButton onClick={this.handleLoginClick} />
+  }
+  `
+  
   
   
   
