@@ -196,7 +196,6 @@
  
    
    ## 除了上面主动会去调用的生命周期，你只可以在组件中使用的 setState() 和 forceUpdate()
-   
    `setState(updater, [callback])`
    
    1. setState() 将对组件 state 的更改排入队列，并通知 React 需要使用更新后的 state 重新渲染此组件及其子组件。
